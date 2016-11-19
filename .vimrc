@@ -13,6 +13,10 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'thoughtbot/vim-rspec'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'fatih/vim-go'
+Plug 'vim-perl/vim-perl'
+Plug 'airblade/vim-gitgutter'
+Plug 'othree/html5.vim'
 call plug#end()
 
 " Basic editor config
