@@ -26,6 +26,7 @@ filetype on
 filetype indent on
 filetype plugin on
 set ruler
+set autoindent
 
 " Statusline
 set statusline=
@@ -36,6 +37,10 @@ set statusline+=%=                        " seperate between right- and left-ali
 set statusline+=%1*%y%*%*                " file type
 set statusline+=%10((%l/%L)%)            " line and column
 set statusline+=%P                        " percentage of file
+
+" Line numbers
+set number
+set cpoptions+=n
 
 " Theme setting
 colorscheme vividchalk
@@ -63,6 +68,9 @@ set clipboard=unnamedplus
 " Indent file
 map <Leader>i mmgg=G`m<CR>
 
+" paste on new line without indentation
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+
 " GUI options
 set guioptions-=m
 set guioptions-=T
@@ -89,3 +97,5 @@ nmap <C-f> :VtrSendLinesToRunner<cr>
 
 " Save as supersuser
 cmap w!! w !sudo tee > /dev/null %
+
+:set autoread
