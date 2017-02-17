@@ -5,6 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rails'
@@ -23,9 +24,13 @@ Plug 'fatih/vim-go'
 Plug 'vim-perl/vim-perl'
 Plug 'airblade/vim-gitgutter'
 Plug 'othree/html5.vim'
+Plug 'sukima/xmledit'
+Plug 'Townk/vim-autoclose'
 call plug#end()
 
 " Basic editor config
+
+set t_Co=256
 set nocompatible
 syntax on
 filetype on
@@ -49,7 +54,7 @@ set number
 set cpoptions+=n
 
 " Theme setting
-colorscheme vividchalk
+colorscheme vividchalk 
 
 " CtrlP configs
 let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
@@ -91,6 +96,8 @@ map <Leader>a :call RunAllSpecs()<CR>
 " Rspec command
 let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}')"
 
+" enable html on xml edit
+let g:xmledit_enable_html  = 1
 " Auto resize winodws
 autocmd VimResized * :wincmd =
 
@@ -104,4 +111,29 @@ nmap <C-f> :VtrSendLinesToRunner<cr>
 " Save as supersuser
 cmap w!! w !sudo tee > /dev/null %
 
-:set autoread
+set autoread
+
+" Search config
+set incsearch
+set hlsearch
+nmap <leader>h :nohlsearch<cr>
+set ignorecase
+set smartcase
+
+
+au FileType c nmap <leader>r :w <CR> :!gcc % -o %< && ./%< <CR>
+
+" Go config
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_fmt_command = "goimports"
