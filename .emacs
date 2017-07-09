@@ -17,7 +17,7 @@
      ("gnu" . "http://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (magit ssh rvm projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
+    (ag magit ssh rvm projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
  '(projectile-globally-ignored-file-suffixes (quote ("~" "#")))
  '(same-window-buffer-names (quote ("*Directory*")))
  '(scroll-bar-mode nil)
@@ -27,7 +27,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#232629" :foreground "#eff0f1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :family "Inconsolata")))))
+ '(default ((t (:inherit nil :stipple nil :background "#232629" :foreground "#eff0f1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :family "Inconsolata")))))
 
 ;; hooks
 
@@ -93,19 +93,25 @@
   :config (ac-config-default))
 (use-package slime
   :ensure t
-  :init (setq inferior-lisp-program "/usr/bin/clisp")
-  :config (progn (require 'slime-autoloads)
-                 (add-to-list 'slime-contribs 'slime-fancy)))
+  :init (progn
+          (setf slime-lisp-implementations
+                `((sbcl ("ros" "-Q" "-l" "~/.sbclrc" "-L" "sbcl" "run"))
+                  (ccl  ("ros" "-Q" "-l" "~/.ccl-init.lisp" "-L" "ccl-bin" "run"))))
+          (setf slime-default-lisp 'sbcl)
+          (setq slime-net-coding-system 'utf-8-unix)
+;          (setq inferior-lisp-program "ros -Q run")
+          :config (progn (require 'slime-autoloads)
+                         (add-to-list 'slime-contribs 'slime-fancy))))
 (use-package sudo-edit
   :ensure t
   :config (global-set-key (kbd "C-c C-r") 'sudo-edit))
 (use-package ssh
   :ensure t
   :config (add-hook 'ssh-mode-hook
-                  (lambda ()
-                    (setq ssh-directory-tracking-mode t)
-                    (shell-dirtrack-mode t)
-                    (setq dirtrackp nil))))
+                    (lambda ()
+                      (setq ssh-directory-tracking-mode t)
+                      (shell-dirtrack-mode t)
+                      (setq dirtrackp nil))))
 (use-package magit
   :ensure t
   :config (progn (global-set-key (kbd "C-x g") 'magit-status)))
@@ -116,3 +122,22 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (windmove-default-keybindings)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode nil))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode nil))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode nil))
+(set-language-environment "UTF-8")
+(setq ring-bell-function 'ignore)
+(setq
+ backup-by-copying t      ; don't clobber symlinks-
+ backup-directory-alist
+ '(("." . "~/.saves"))    ; don't litter my fs tree
+ auto-save-file-name-transforms
+ `((".*" ,temporary-file-directory t))
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups
+(global-set-key (kbd "<RET>") 'newline-and-indent)
+
+;; We tell slime to not load failed compiled code
+(setq slime-load-failed-fasl 'never)
