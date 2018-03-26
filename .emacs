@@ -4,12 +4,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
+ '(js-indent-level 2)
  '(menu-bar-mode nil)
  '(package-archives
    (quote
@@ -17,8 +15,9 @@
      ("gnu" . "http://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (ag magit ssh rvm projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
+    (docker xclip yaml-mode anaconda-mode pyenv-mode elpy handlebars-mode exec-path-from-shell bundler rspec-mode ein color-themes cider clojure-mode inf-ruby ag magit ssh projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
  '(projectile-globally-ignored-file-suffixes (quote ("~" "#")))
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(same-window-buffer-names (quote ("*Directory*")))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
@@ -27,7 +26,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#232629" :foreground "#eff0f1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :family "Inconsolata")))))
+ '(default ((t (:inherit nil :stipple nil :background "#232629" :foreground "#eff0f1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :family "Futura")))))
 
 ;; hooks
 
@@ -57,10 +56,7 @@
 (use-package flx-ido
   :ensure t
   :config (flx-ido-mode t))
-(use-package color-theme
-  :ensure t
-  :init (progn (color-theme-initialize)
-               (color-theme-dark-laptop)))
+
 (use-package flycheck
   :ensure t
   :config (global-flycheck-mode))
@@ -74,10 +70,6 @@
 (use-package projectile-rails
   :ensure t
   :config (projectile-rails-mode))
-(use-package rvm
-  :ensure t
-  :config (add-hook 'ruby-mode-hook (lambda ()
-                                      rvm-activate-corresponding-ruby)))
 (use-package go-mode
   :ensure t)
 (use-package smex
@@ -115,6 +107,27 @@
 (use-package magit
   :ensure t
   :config (progn (global-set-key (kbd "C-x g") 'magit-status)))
+
+(use-package js2-mode
+  :ensure t
+  :config (progn
+            (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+            (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)))
+(use-package js2-refactor
+  :ensure t
+  :config (progn
+            (add-hook 'js2-mode-hook #'js2-refactor-mode)
+            (js2r-add-keybindings-with-prefix "C-c C-r")
+            (define-key js2-mode-map (kbd "C-k") #'js2r-kill)))
+(use-package xref-js2
+  :ensure t
+  :config (progn
+            (define-key js-mode-map (kbd "M-.") nil)
+            (add-hook 'js2-mode-hook (lambda ()
+                                       (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
+(use-package rjsx-mode
+  :ensure t
+  :config (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode)))
 (setq doc-view-continuous t)
 (global-auto-revert-mode t)
 ;; (provide '.emacs)
@@ -122,9 +135,9 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (windmove-default-keybindings)
-(if (fboundp 'menu-bar-mode) (menu-bar-mode nil))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode nil))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode nil))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (set-language-environment "UTF-8")
 (setq ring-bell-function 'ignore)
 (setq
@@ -141,3 +154,7 @@
 
 ;; We tell slime to not load failed compiled code
 (setq slime-load-failed-fasl 'never)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(load-theme 'misterioso)
+(exec-path-from-shell-initialize)
+(show-paren-mode t)
