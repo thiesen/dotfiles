@@ -38,6 +38,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(use-package exec-path-from-shell)
 (use-package ido
   :ensure t
   :init (progn (setq ido-enable-flex-matching t)
@@ -158,3 +159,5 @@
 (load-theme 'misterioso)
 (exec-path-from-shell-initialize)
 (show-paren-mode t)
+(setq x-select-enable-clipboard t
+      x-select-enable-primary t)
