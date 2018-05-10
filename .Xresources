@@ -1,16 +1,8 @@
-##############
-# Xft settings
-##############
-
 Xft.dpi:                    96
 Xft.antialias:              true
 Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
-
-#################################
-# Color settings (Solarized dark)
-#################################
 
 *background: #002b36
 *foreground: #657b83
@@ -52,11 +44,6 @@ Xft.hintstyle:              hintslight
 *color7: #eee8d5
 *color15: #fdf6e3
 
-
-################
-# URXVT settings
-################
-
 URxvt.depth:                32
 URxvt.geometry:             90x30
 URxvt.loginShell:           true
@@ -81,16 +68,8 @@ URxvt*saveLines: 12000
 URxvt*foreground: #657b83
 URxvt*background: #002b36
 
-# Monaco Linux font
 URxvt*font: xft:Inconsolata:pixelsize=13
 URxvt*boldFont: xft:Inconsolata:bold:pixelsize=13
 URxvt*letterSpace: -1
 
-# scrollbar - true (default) or false
-URxvt*scrollBar: true
-
-# scrollbar position - left=false (default) or right=true
-URxvt*scrollBar_right: false
-
-# scrollbar style - rxvt (default), plain, next, or xterm
-URxvt*scrollstyle: plain
+URxvt*scrollBar: false
