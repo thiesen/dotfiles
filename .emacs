@@ -15,7 +15,7 @@
      ("gnu" . "http://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (docker xclip yaml-mode anaconda-mode pyenv-mode elpy handlebars-mode exec-path-from-shell bundler rspec-mode ein color-themes cider clojure-mode inf-ruby ag magit ssh projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
+    (dockerfile-mode enh-ruby-mode docker xclip yaml-mode anaconda-mode pyenv-mode elpy handlebars-mode exec-path-from-shell bundler rspec-mode ein color-themes cider clojure-mode inf-ruby ag magit ssh projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
  '(projectile-globally-ignored-file-suffixes (quote ("~" "#")))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(same-window-buffer-names (quote ("*Directory*")))
@@ -26,7 +26,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#232629" :foreground "#eff0f1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :family "Futura")))))
+ '(default ((t (:inherit nil :stipple nil :background "#232629" :foreground "#eff0f1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 96 :width normal :family "Inconsolata")))))
 
 ;; hooks
 
@@ -57,7 +57,14 @@
 (use-package flx-ido
   :ensure t
   :config (flx-ido-mode t))
-
+(use-package enh-ruby-mode
+  :ensure t
+  :config (progn
+            (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
+            (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+            (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+            (add-to-list 'auto-mode-alist
+                         '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))))
 (use-package flycheck
   :ensure t
   :config (global-flycheck-mode))
@@ -87,6 +94,7 @@
 (use-package slime
   :ensure t
   :init (progn
+          (load (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el"))
           (setf slime-lisp-implementations
                 `((sbcl ("ros" "-Q" "-l" "~/.sbclrc" "-L" "sbcl" "run"))
                   (ccl  ("ros" "-Q" "-l" "~/.ccl-init.lisp" "-L" "ccl-bin" "run"))))
@@ -108,27 +116,14 @@
 (use-package magit
   :ensure t
   :config (progn (global-set-key (kbd "C-x g") 'magit-status)))
-
-(use-package js2-mode
-  :ensure t
-  :config (progn
-            (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-            (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)))
-(use-package js2-refactor
-  :ensure t
-  :config (progn
-            (add-hook 'js2-mode-hook #'js2-refactor-mode)
-            (js2r-add-keybindings-with-prefix "C-c C-r")
-            (define-key js2-mode-map (kbd "C-k") #'js2r-kill)))
-(use-package xref-js2
-  :ensure t
-  :config (progn
-            (define-key js-mode-map (kbd "M-.") nil)
-            (add-hook 'js2-mode-hook (lambda ()
-                                       (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
 (use-package rjsx-mode
   :ensure t
   :config (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode)))
+(use-package yaml-mode
+  :ensure t)
+(use-package dockerfile-mode
+  :ensure t)
+
 (setq doc-view-continuous t)
 (global-auto-revert-mode t)
 ;; (provide '.emacs)
