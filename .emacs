@@ -123,7 +123,9 @@
   :ensure t)
 (use-package dockerfile-mode
   :ensure t)
-
+(use-package elpy
+  :ensure t
+  :config (elpy-enable))
 (setq doc-view-continuous t)
 (global-auto-revert-mode t)
 ;; (provide '.emacs)
