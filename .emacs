@@ -4,6 +4,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("923ee73494ea3611d2a1ff9f31bbf8d71b0b0cc2aeb4a6e0944ec6c83bc0ac23" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
@@ -15,7 +18,7 @@
      ("gnu" . "http://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (dockerfile-mode enh-ruby-mode docker xclip yaml-mode anaconda-mode pyenv-mode elpy handlebars-mode exec-path-from-shell bundler rspec-mode ein color-themes cider clojure-mode inf-ruby ag magit ssh projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
+    (cyberpunk-theme dockerfile-mode enh-ruby-mode docker xclip yaml-mode anaconda-mode pyenv-mode elpy handlebars-mode exec-path-from-shell bundler rspec-mode ein color-themes cider clojure-mode inf-ruby ag magit ssh projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
  '(projectile-globally-ignored-file-suffixes (quote ("~" "#")))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(same-window-buffer-names (quote ("*Directory*")))
@@ -26,7 +29,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#232629" :foreground "#eff0f1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 96 :width normal :family "Inconsolata")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 96 :width normal :family "Inconsolata")))))
 
 ;; hooks
 
@@ -125,7 +128,19 @@
   :ensure t)
 (use-package elpy
   :ensure t
-  :config (elpy-enable))
+  :config (progn
+            (elpy-enable)
+            (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+            (add-hook 'elpy-mode-hook 'flycheck-mode)))
+(use-package py-autopep8
+  :ensure t
+  :config (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+(use-package ein
+  :ensure t)
+(use-package ag
+  :ensure t)
+(use-package cyberpunk-theme
+  :ensure t)
 (setq doc-view-continuous t)
 (global-auto-revert-mode t)
 ;; (provide '.emacs)
@@ -153,8 +168,9 @@
 ;; We tell slime to not load failed compiled code
 (setq slime-load-failed-fasl 'never)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(load-theme 'misterioso)
+(load-theme 'cyberpunk)
 (exec-path-from-shell-initialize)
 (show-paren-mode t)
 (setq x-select-enable-clipboard t
-      x-select-enable-primary t)
+      x-select-enable-primary t
+(setq column-number-mode t)
