@@ -172,5 +172,5 @@
 (exec-path-from-shell-initialize)
 (show-paren-mode t)
 (setq x-select-enable-clipboard t
-      x-select-enable-primary t
+      x-select-enable-primary t)
 (setq column-number-mode t)
