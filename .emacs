@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("923ee73494ea3611d2a1ff9f31bbf8d71b0b0cc2aeb4a6e0944ec6c83bc0ac23" default)))
+    ("d1cc05d755d5a21a31bced25bed40f85d8677e69c73ca365628ce8024827c9e3" "923ee73494ea3611d2a1ff9f31bbf8d71b0b0cc2aeb4a6e0944ec6c83bc0ac23" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
@@ -18,7 +18,7 @@
      ("gnu" . "http://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (cyberpunk-theme dockerfile-mode enh-ruby-mode docker xclip yaml-mode anaconda-mode pyenv-mode elpy handlebars-mode exec-path-from-shell bundler rspec-mode ein color-themes cider clojure-mode inf-ruby ag magit ssh projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
+    (tagedit rainbow-delimiters paredit clojure-mode-extra-font-locking weechat yafolding julia-mode web-mode jinja2-mode cyberpunk-theme dockerfile-mode enh-ruby-mode docker xclip yaml-mode anaconda-mode pyenv-mode elpy handlebars-mode exec-path-from-shell bundler rspec-mode ein color-themes cider clojure-mode inf-ruby ag magit ssh projectile-rails evil sudo-edit sudo-save slime smartparens auto-complete git-gutter smex go-mode flx-ido projectile flycheck use-package color-theme)))
  '(projectile-globally-ignored-file-suffixes (quote ("~" "#")))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(same-window-buffer-names (quote ("*Directory*")))
@@ -29,7 +29,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 96 :width normal :family "Inconsolata")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 102 :width normal :family "Inconsolata")))))
 
 ;; hooks
 
@@ -74,13 +74,19 @@
 (use-package projectile
   :ensure t
   :init (setq projectile-require-project-root nil)
-  :config (projectile-mode))
+  :config (progn
+            (projectile-mode +1)
+            (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+            (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  :config (projectile-rails-global-mode))
+(use-package rspec-mode
+  :ensure t)
 (use-package inf-ruby
   :ensure t
   :config (add-hook 'after-init-hook 'inf-ruby-switch-setup))
 (use-package projectile-rails
   :ensure t
-  :config (projectile-rails-mode))
+  :config (projectile-rails-global-mode))
 (use-package go-mode
   :ensure t)
 (use-package smex
@@ -97,13 +103,11 @@
 (use-package slime
   :ensure t
   :init (progn
-          (load (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el"))
           (setf slime-lisp-implementations
-                `((sbcl ("ros" "-Q" "-l" "~/.sbclrc" "-L" "sbcl" "run"))
+                `((sbcl ("sbcl"))
                   (ccl  ("ros" "-Q" "-l" "~/.ccl-init.lisp" "-L" "ccl-bin" "run"))))
           (setf slime-default-lisp 'sbcl)
           (setq slime-net-coding-system 'utf-8-unix)
-;          (setq inferior-lisp-program "ros -Q run")
           :config (progn (require 'slime-autoloads)
                          (add-to-list 'slime-contribs 'slime-fancy))))
 (use-package sudo-edit
@@ -141,6 +145,9 @@
   :ensure t)
 (use-package cyberpunk-theme
   :ensure t)
+(use-package rbenv
+  :ensure t
+  :config (global-rbenv-mode))
 (setq doc-view-continuous t)
 (global-auto-revert-mode t)
 ;; (provide '.emacs)
@@ -174,3 +181,87 @@
 (setq x-select-enable-clipboard t
       x-select-enable-primary t)
 (setq column-number-mode t)
+
+;; org-mode
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
+(setq org-replace-disputed-keys t)
+
+
+;; clojure
+(add-hook 'clojure-mode-hook 'enable-paredit-mode)
+
+;; This is useful for working with camel-case tokens, like names of
+;; Java classes (e.g. JavaClassName)
+(add-hook 'clojure-mode-hook 'subword-mode)
+
+;; A little more syntax highlighting
+(require 'clojure-mode-extra-font-locking)
+
+;; syntax hilighting for midje
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (setq inferior-lisp-program "lein repl")
+            (font-lock-add-keywords
+             nil
+             '(("(\\(facts?\\)"
+                (1 font-lock-keyword-face))
+               ("(\\(background?\\)"
+                (1 font-lock-keyword-face))))
+            (define-clojure-indent (fact 1))
+            (define-clojure-indent (facts 1))))
+
+;;;;
+;; Cider
+;;;;
+
+;; provides minibuffer documentation for the code you're typing into the repl
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+
+;; go right to the REPL buffer when it's finished connecting
+(setq cider-repl-pop-to-buffer-on-connect t)
+
+;; When there's a cider error, show its buffer and switch to it
+(setq cider-show-error-buffer t)
+(setq cider-auto-select-error-buffer t)
+
+;; Where to store the cider history.
+(setq cider-repl-history-file "~/.emacs.d/cider-history")
+
+;; Wrap when navigating history.
+(setq cider-repl-wrap-history t)
+
+;; Use clojure mode for other extensions
+(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("lein-env" . enh-ruby-mode))
+
+
+;; key bindings
+;; these help me out with the way I usually develop web apps
+(defun cider-start-http-server ()
+  (interactive)
+  (cider-load-current-buffer)
+  (let ((ns (cider-current-ns)))
+    (cider-repl-set-ns ns)
+    (cider-interactive-eval (format "(println '(def server (%s/start))) (println 'server)" ns))
+    (cider-interactive-eval (format "(def server (%s/start)) (println server)" ns))))
+
+
+(defun cider-refresh ()
+  (interactive)
+  (cider-interactive-eval (format "(user/reset)")))
+
+(defun cider-user-ns ()
+  (interactive)
+  (cider-repl-set-ns "user"))
+
+(eval-after-load 'cider
+  '(progn
+     (define-key clojure-mode-map (kbd "C-c C-v") 'cider-start-http-server)
+     (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
+     (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
+(define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
