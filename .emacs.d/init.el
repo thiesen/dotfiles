@@ -21,17 +21,27 @@
     sudo-edit
     magit
     ag
+    company
     cyberpunk-theme
-    paredit
     clojure-mode
     clojure-mode-extra-font-locking
     cider
     ido-completing-read+
     rainbow-delimiters
-    tagedit))
+    tagedit
+    projectile-rails
+    robe
+    ruby-end
+    rspec-mode))
 
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
+
+(when (memq window-system '(mac ns))
+  (setq mac-option-key-is-meta nil)
+  (setq mac-command-key-is-meta t)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier nil))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)

@@ -44,3 +44,7 @@
 (global-set-key (kbd "<RET>") 'newline-and-indent)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(global-flycheck-mode)
+
+(add-hook 'after-init-hook 'global-company-mode)

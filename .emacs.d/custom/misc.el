@@ -6,3 +6,9 @@
 (setq create-lockfiles nil)
 
 (setq inhibit-startup-message t)
+
+(setq doc-view-continuous t)
+
+(set-language-environment "UTF-8")
+
+(setq ring-bell-function 'ignore)
