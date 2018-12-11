@@ -10,5 +10,15 @@
 (setq doc-view-continuous t)
 
 (set-language-environment "UTF-8")
+(setenv "LANG" "en_US.UTF-8")
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 (setq ring-bell-function 'ignore)
+
+(setq initial-scratch-message nil)
+
+(setq large-file-warning-threshold nil)

@@ -7,6 +7,14 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(setq-default c-basic-offset 2)
+
+(setq css-indent-offset 2)
+(setq js-indent-level 2)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
 
 (require 'saveplace)
 (setq-default save-place t)
@@ -48,3 +56,10 @@
 (global-flycheck-mode)
 
 (add-hook 'after-init-hook 'global-company-mode)
+
+(setq-default require-final-newline t mode-require-final-newline t )
+
+(run-with-idle-timer 2 nil (lambda () (global-auto-revert-mode t)))
+
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
