@@ -34,6 +34,7 @@
     ruby-end
     rspec-mode
     yaml-mode
+    enh-ruby-mode
     ansible))
 
 (if (eq system-type 'darwin)
@@ -74,7 +75,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails paredit magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
+    (enh-ruby-mode yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails paredit magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
