@@ -32,7 +32,9 @@
     projectile-rails
     robe
     ruby-end
-    rspec-mode))
+    rspec-mode
+    yaml-mode
+    ansible))
 
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
@@ -60,7 +62,22 @@
 (load "clojure-config.el")
 (load "js-config.el")
 (load "magit-config.el")
-;;(load "ruby-config.el")
+(load "ruby-config.el")
+(load "lisp-config.el")
+(load "ansible-config.el")
 ;;(load "go-config.el")
 ;;(load "python-config.el")
-(load "lisp-config.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails paredit magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
