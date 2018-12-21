@@ -8,34 +8,45 @@
 
 (when (not package-archive-contents)
   (package-refresh-contents))
-
-(defvar my-packages
-  '(
-    ido
+;; define package collections
+(defvar ruby-pkgs
+  '(projectile-rails
+    robe
+    ruby-end
+    rspec-mode
+    enh-ruby-mode))
+(defvar clojure-pkgs
+  '(clojure-mode
+    clojure-mode-extra-font-locking
+    cider))
+(defvar nav-pkgs
+  '(ido
     flx-ido
-    flycheck
     projectile
     smex
+    ag))
+(defvar misc-pkgs
+  '(flycheck
     git-gutter
     auto-complete
     sudo-edit
     magit
-    ag
     company
     cyberpunk-theme
-    clojure-mode
-    clojure-mode-extra-font-locking
-    cider
     ido-completing-read+
     rainbow-delimiters
     tagedit
-    projectile-rails
-    robe
-    ruby-end
-    rspec-mode
     yaml-mode
-    enh-ruby-mode
     ansible))
+;; add defined collections to pkg list
+(defvar pkg-list
+  '(ruby-pkgs
+    clojure-pkgs
+    nav-pkgs
+    misc-pkgs))
+;; create a concatenated list with the values of the collections
+(defvar my-packages
+  (mapcan #'(lambda (var-name) (symbol-value var-name)) pkg-list))
 
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
