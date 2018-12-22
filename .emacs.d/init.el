@@ -38,24 +38,25 @@
     tagedit
     yaml-mode
     ansible))
+(defvar go-pkgs
+  '(go-mode
+    go-guru
+    flycheck-gometalinter
+    go-autocomplete
+    company-go))
 ;; add defined collections to pkg list
 (defvar pkg-list
   '(ruby-pkgs
     clojure-pkgs
     nav-pkgs
-    misc-pkgs))
+    misc-pkgs
+    go-pkgs))
 ;; create a concatenated list with the values of the collections
 (defvar my-packages
   (mapcan #'(lambda (var-name) (symbol-value var-name)) pkg-list))
 
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
-
-(when (memq window-system '(mac ns))
-  (setq mac-option-key-is-meta nil)
-  (setq mac-command-key-is-meta t)
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier nil))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -77,7 +78,7 @@
 (load "ruby-config.el")
 (load "lisp-config.el")
 (load "ansible-config.el")
-;;(load "go-config.el")
+(load "go-config.el")
 ;;(load "python-config.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -86,7 +87,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (enh-ruby-mode yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails paredit magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
+    (company-go enh-ruby-mode yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

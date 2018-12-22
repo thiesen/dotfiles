@@ -11,3 +11,4 @@ backups
 melpa
 archive-contents
 elpa
+*.dat

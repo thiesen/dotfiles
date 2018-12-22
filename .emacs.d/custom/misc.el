@@ -1,3 +1,9 @@
+(when (memq window-system '(mac ns))
+  (setq mac-option-key-is-meta nil)
+  (setq mac-command-key-is-meta t)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier nil))
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq-default sh-basic-offset 2)
