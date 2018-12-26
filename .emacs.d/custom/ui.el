@@ -4,13 +4,12 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(global-linum-mode)
 (column-number-mode t)
 (visual-line-mode t)
 
 (load-theme 'cyberpunk t)
 
-(set-face-attribute 'default nil :height 145 :family "Inconsolata")
+(set-face-attribute 'default nil :height 102 :family "Inconsolata")
 
 (setq x-select-enable-clipboard t
       x-select-enable-primary t

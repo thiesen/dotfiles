@@ -3,6 +3,11 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-copy-env "GOPATH"))
 
+
+(defun go-run-buffer()
+  (interactive)
+  (shell-command (concat "go run " (buffer-name))))
+
 (defun my-go-mode-hook ()
   (add-hook 'before-save-hook 'gofmt-before-save) ; gofmt before every save
   (setq gofmt-command "goimports")                ; gofmt uses invokes goimports
@@ -18,6 +23,7 @@
   (local-set-key (kbd "M-P") 'recompile)
   (local-set-key (kbd "M-]") 'next-error)
   (local-set-key (kbd "M-[") 'previous-error)
+  (local-set-key (kbd "C-c C-c") 'go-run-buffer)
 
   (auto-complete-mode 1))
 
@@ -34,3 +40,5 @@
 (require 'flycheck-gometalinter)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
+
+(go-eldoc-setup)

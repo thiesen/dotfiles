@@ -37,13 +37,14 @@
     rainbow-delimiters
     tagedit
     yaml-mode
+    pdf-tools
     ansible))
 (defvar go-pkgs
   '(go-mode
     go-guru
     flycheck-gometalinter
-    go-autocomplete
-    company-go))
+    company-go
+    go-eldoc))
 ;; add defined collections to pkg list
 (defvar pkg-list
   '(ruby-pkgs
@@ -79,6 +80,7 @@
 (load "lisp-config.el")
 (load "ansible-config.el")
 (load "go-config.el")
+(load "pdf-config.el")
 ;;(load "python-config.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
