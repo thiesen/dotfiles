@@ -38,7 +38,8 @@
     tagedit
     yaml-mode
     pdf-tools
-    ansible))
+    ansible
+    rainbow-mode))
 (defvar go-pkgs
   '(go-mode
     go-guru
@@ -46,12 +47,17 @@
     company-go
     go-eldoc))
 ;; add defined collections to pkg list
+(defvar docker-pkgs
+  '(docker
+    dockerfile-mode
+    docker-tramp))
 (defvar pkg-list
   '(ruby-pkgs
     clojure-pkgs
     nav-pkgs
     misc-pkgs
-    go-pkgs))
+    go-pkgs
+    docker-pkgs))
 ;; create a concatenated list with the values of the collections
 (defvar my-packages
   (mapcan #'(lambda (var-name) (symbol-value var-name)) pkg-list))
@@ -81,6 +87,7 @@
 (load "ansible-config.el")
 (load "go-config.el")
 (load "pdf-config.el")
+(load "docker-config.el")
 ;;(load "python-config.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -89,7 +96,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-go enh-ruby-mode yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
+    (highlight-indentation dr-racket-like-unicode company-go enh-ruby-mode yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
