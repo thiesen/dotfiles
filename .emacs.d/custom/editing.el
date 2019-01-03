@@ -53,8 +53,7 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(global-flycheck-mode)
-
+(add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (setq-default require-final-newline t mode-require-final-newline t )

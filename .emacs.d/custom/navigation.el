@@ -37,4 +37,6 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (setq projectile-require-project-root nil)
 (setq ag-highlight-search t)
-(setq ag-reuse-window t)
+(setq ag-reuse-window nil)
+
+(global-set-key (kbd "C-x C-d") 'ido-dired)

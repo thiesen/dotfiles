@@ -12,3 +12,8 @@
              '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
 
 (remove-hook 'enh-ruby-mode-hook 'erm-define-faces)
+(setq ruby-deep-indent-paren nil)
+(global-set-key (kbd "C-c r r") 'inf-ruby)
+
+(global-company-mode t)
+(push 'company-robe company-backends)
