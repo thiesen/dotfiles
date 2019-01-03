@@ -12,3 +12,4 @@ melpa
 archive-contents
 elpa
 *.dat
+eshell/
