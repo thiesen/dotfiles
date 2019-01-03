@@ -7,7 +7,8 @@
 (column-number-mode t)
 (visual-line-mode t)
 
-(load-theme 'cyberpunk t)
+;;(load-theme 'cyberpunk t)
+(load-theme 'gruvbox-dark-hard t)
 
 (set-face-attribute 'default nil :height 102 :family "Inconsolata")
 
