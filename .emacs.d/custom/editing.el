@@ -80,3 +80,4 @@
 
 (global-set-key [(control shift up)]  'move-line-up)
 (global-set-key [(control shift down)]  'move-line-down)
+(global-git-gutter-mode +1)
