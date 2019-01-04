@@ -37,7 +37,8 @@
     ido-completing-read+
     yaml-mode
     pdf-tools
-    ansible))
+    ansible
+    git-link))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
@@ -95,20 +96,3 @@
 (load "docker-config.el")
 (load "web-config.el")
 ;;(load "python-config.el")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("a5956ec25b719bf325e847864e16578c61d8af3e8a3d95f60f9040d02497e408" "f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" default)))
- '(package-selected-packages
-   (quote
-    (gruvbox-theme ob-go web-mode highlight-indentation dr-racket-like-unicode company-go enh-ruby-mode yaml-mode tagedit sudo-edit smex ruby-end rspec-mode robe rainbow-delimiters projectile-rails magit ido-completing-read+ git-gutter flycheck flx-ido exec-path-from-shell cyberpunk-theme company clojure-mode-extra-font-locking cider auto-complete ag))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
