@@ -38,7 +38,8 @@
     yaml-mode
     pdf-tools
     ansible
-    git-link))
+    git-link
+    restclient))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
