@@ -20,3 +20,10 @@
    (dot        . t)
    (css        . t)
    (go         . t)))
+
+(add-hook 'org-mode-hook 'org-bullets-mode)
+(setq org-ellipsis "⤵")
+
+(setq org-src-fontify-natively t)
+(setq org-src-window-setup 'current-window)
+(setq org-confirm-babel-evaluate nil)

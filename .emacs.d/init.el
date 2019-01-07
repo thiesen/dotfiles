@@ -39,7 +39,8 @@
     pdf-tools
     ansible
     git-link
-    restclient))
+    restclient
+    org-bullets))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
