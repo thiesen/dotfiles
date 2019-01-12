@@ -27,3 +27,21 @@
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup 'current-window)
 (setq org-confirm-babel-evaluate nil)
+
+(defun org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+(eval-after-load "org"
+  '(progn
+     (require 'ox-md nil t)
+     (require 'ox-gfm nil t)))
+
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))

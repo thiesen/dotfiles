@@ -40,7 +40,9 @@
     ansible
     git-link
     restclient
-    org-bullets))
+    org-bullets
+    ox-gfm
+    ssh))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
