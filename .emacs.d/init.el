@@ -20,8 +20,8 @@
     clojure-mode-extra-font-locking
     cider))
 (defvar nav-pkgs
-  '(ido
-    flx-ido
+  '(ivy
+    counsel
     projectile
     smex
     ag))
