@@ -25,10 +25,13 @@
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
 (setq ivy-format-function 'ivy-format-function-arrow)
-
-(setq projectile-completion-system 'ivy)
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))
+(setq ivy-initial-inputs-alist nil)
 
 (setq magit-completing-read-function 'ivy-completing-read)
+(setq projectile-completion-system 'ivy)
+
 (require 'counsel)
 (global-set-key (kbd "C-s") 'swiper)
 (global-set-key (kbd "M-x") 'counsel-M-x)
