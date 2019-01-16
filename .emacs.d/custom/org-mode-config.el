@@ -19,7 +19,8 @@
    (ruby       . t)
    (dot        . t)
    (css        . t)
-   (go         . t)))
+   (go         . t)
+   (lisp       . t)))
 
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (setq org-ellipsis "⤵")

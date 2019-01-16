@@ -18,7 +18,10 @@
 (setq ag-highlight-search t)
 (setq ag-reuse-window nil)
 
-(global-set-key (kbd "C-x C-d") 'ido-dired)
+(global-set-key (kbd "C-x C-d") 'dired)
+
+(setq ivy-extra-directories nil)
+(global-set-key "\C-s" 'swiper)
 
 (ivy-mode 1)
 
