@@ -22,3 +22,5 @@
 (setq ring-bell-function 'ignore)
 
 (setq-default fill-column 80)
+
+(global-prettify-symbols-mode 1)

@@ -99,4 +99,5 @@
 (load "pdf-config.el")
 (load "docker-config.el")
 (load "web-config.el")
+(load "eshell-config.el")
 ;;(load "python-config.el")
