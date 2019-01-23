@@ -14,7 +14,8 @@
     robe
     ruby-end
     rspec-mode
-    enh-ruby-mode))
+    enh-ruby-mode
+    bundle))
 (defvar clojure-pkgs
   '(clojure-mode
     clojure-mode-extra-font-locking

@@ -17,3 +17,4 @@
 
 (global-company-mode t)
 (push 'company-robe company-backends)
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
