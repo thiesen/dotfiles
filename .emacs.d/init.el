@@ -15,7 +15,7 @@
     ruby-end
     rspec-mode
     enh-ruby-mode
-    bundle))
+    bundler))
 (defvar clojure-pkgs
   '(clojure-mode
     clojure-mode-extra-font-locking
@@ -28,21 +28,16 @@
     ag))
 (defvar misc-pkgs
   '(flycheck
-    git-gutter
     auto-complete
     sudo-edit
-    magit
     company
     cyberpunk-theme
     gruvbox-theme
-    ido-completing-read+
     yaml-mode
     pdf-tools
     ansible
-    git-link
     restclient
     org-bullets
-    ox-gfm
     ssh))
 (defvar web-pkgs
   '(web-mode
@@ -56,11 +51,15 @@
     company-go
     go-eldoc
     ob-go))
-;; add defined collections to pkg list
 (defvar docker-pkgs
   '(docker
     dockerfile-mode
     docker-tramp))
+(defvar git-pkgs
+  '(magit
+    git-gutter
+    git-link
+    ox-gfm))
 (defvar pkg-list
   '(ruby-pkgs
     clojure-pkgs
@@ -68,7 +67,8 @@
     misc-pkgs
     go-pkgs
     docker-pkgs
-    web-pkgs))
+    web-pkgs
+    git-pkgs))
 ;; create a concatenated list with the values of the collections
 (defvar my-packages
   (mapcan #'(lambda (var-name) (symbol-value var-name)) pkg-list))
@@ -102,3 +102,17 @@
 (load "web-config.el")
 (load "eshell-config.el")
 ;;(load "python-config.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (yaml-mode web-mode tagedit sudo-edit ssh smex ruby-end rspec-mode robe restclient rainbow-mode rainbow-delimiters projectile-rails pdf-tools paredit ox-gfm org-bullets ob-go magit ido-completing-read+ gruvbox-theme go-guru go-eldoc git-link git-gutter flycheck-gometalinter flx-ido exec-path-from-shell enh-ruby-mode dockerfile-mode docker cyberpunk-theme counsel company-go clojure-mode-extra-font-locking cider auto-complete ansible ag))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
