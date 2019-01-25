@@ -20,7 +20,6 @@
 
 (global-set-key (kbd "C-x C-d") 'dired)
 
-(setq ivy-extra-directories nil)
 (global-set-key "\C-s" 'swiper)
 
 (ivy-mode 1)
@@ -44,3 +43,4 @@
 (global-set-key (kbd "<f1> l") 'counsel-find-library)
 (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+(setq history-delete-duplicates t)

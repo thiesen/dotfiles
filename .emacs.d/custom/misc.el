@@ -34,3 +34,5 @@
             (setq ssh-directory-tracking-mode t)
             (shell-dirtrack-mode t)
             (setq dirtrackp nil)))
+
+(async-bytecomp-package-mode 1)

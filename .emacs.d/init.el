@@ -101,6 +101,7 @@
 (load "docker-config.el")
 (load "web-config.el")
 (load "eshell-config.el")
+(load "ssh-config.el")
 ;;(load "python-config.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
