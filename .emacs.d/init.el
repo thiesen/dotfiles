@@ -59,7 +59,9 @@
   '(magit
     git-gutter
     git-link
-    ox-gfm))
+    ox-gfm
+    forge
+    ghub))
 (defvar pkg-list
   '(ruby-pkgs
     clojure-pkgs
@@ -83,11 +85,13 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/custom")
 
+(load "utils.el")
 (load "shell-integration.el")
 (load "navigation.el")
 (load "ui.el")
 (load "editing.el")
 (load "misc.el")
+(load "personal.el")
 
 (load "org-mode-config.el")
 (load "clojure-config.el")
@@ -95,7 +99,6 @@
 (load "magit-config.el")
 (load "ruby-config.el")
 (load "lisp-config.el")
-(load "ansible-config.el")
 (load "go-config.el")
 (load "pdf-config.el")
 (load "docker-config.el")
@@ -110,7 +113,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yaml-mode web-mode tagedit sudo-edit ssh smex ruby-end rspec-mode robe restclient rainbow-mode rainbow-delimiters projectile-rails pdf-tools paredit ox-gfm org-bullets ob-go magit ido-completing-read+ gruvbox-theme go-guru go-eldoc git-link git-gutter flycheck-gometalinter flx-ido exec-path-from-shell enh-ruby-mode dockerfile-mode docker cyberpunk-theme counsel company-go clojure-mode-extra-font-locking cider auto-complete ansible ag))))
+    (racket-mode geiser foreign-regexp ghub+ yaml-mode web-mode tagedit sudo-edit ssh smex ruby-end rspec-mode robe restclient rainbow-mode rainbow-delimiters projectile-rails pdf-tools paredit ox-gfm org-bullets ob-go magit ido-completing-read+ gruvbox-theme go-guru go-eldoc git-link git-gutter flycheck-gometalinter flx-ido exec-path-from-shell enh-ruby-mode dockerfile-mode docker cyberpunk-theme counsel company-go clojure-mode-extra-font-locking cider auto-complete ansible ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

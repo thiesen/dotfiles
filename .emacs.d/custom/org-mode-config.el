@@ -1,14 +1,9 @@
 (setq initial-major-mode 'org-mode)
 
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-switchb)
-(setq org-replace-disputed-keys t)
-
-(setq org-confirm-babel-evaluate nil
-      org-src-fontify-natively t
-      org-src-tab-acts-natively t)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c b") 'org-switchb)
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -24,21 +19,30 @@
 
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (setq org-ellipsis "⤵")
-
+(setq org-replace-disputed-keys t)
+(setq org-src-tab-acts-natively t)
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup 'current-window)
 (setq org-confirm-babel-evaluate nil)
+(setq org-support-shift-select 'always)
 
-(defun org-summary-todo (n-done n-not-done)
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+
+
+
+(defun custom/org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
   (let (org-log-done org-log-states)   ; turn off logging
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
-(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+(add-hook 'org-after-todo-statistics-hook 'custom/org-summary-todo)
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+      '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c)")))
 
 (eval-after-load "org"
   '(progn

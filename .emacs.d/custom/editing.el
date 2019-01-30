@@ -53,6 +53,7 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)
+(global-set-key (kbd "M-/") 'company-complete-common)
 
 (setq-default require-final-newline t mode-require-final-newline t )
 
