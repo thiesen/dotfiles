@@ -14,3 +14,4 @@ elpa
 *.dat
 eshell/
 .cask/
+*.sqlite
