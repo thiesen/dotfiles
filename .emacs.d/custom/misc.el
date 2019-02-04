@@ -36,3 +36,5 @@
             (setq dirtrackp nil)))
 
 (async-bytecomp-package-mode 1)
+(persistent-scratch-setup-default)
+(setq-default bidi-display-reordering nil)
