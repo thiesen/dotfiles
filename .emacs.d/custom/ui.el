@@ -7,7 +7,7 @@
 (column-number-mode t)
 (visual-line-mode t)
 
-(load-theme 'gruvbox-dark-hard t)
+(load-theme 'nimbus t)
 
 (setq x-select-enable-clipboard t
       x-select-enable-primary t

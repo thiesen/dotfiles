@@ -33,6 +33,7 @@
     company
     cyberpunk-theme
     gruvbox-theme
+    nimbus-theme
     yaml-mode
     pdf-tools
     ansible
