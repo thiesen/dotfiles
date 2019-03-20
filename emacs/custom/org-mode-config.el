@@ -42,7 +42,7 @@
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c)")))
+      '((sequence "TODO(t)" "|" "DONE(d)" "CANCELED(c)")))
 
 (eval-after-load "org"
   '(progn

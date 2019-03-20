@@ -1,9 +1,6 @@
 (show-paren-mode t)
 (global-hl-line-mode t)
 
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
-
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default c-basic-offset 2)
@@ -81,4 +78,4 @@
 (global-set-key [(control shift down)]  'move-line-down)
 (global-git-gutter-mode +1)
 
- (global-subword-mode 1)
+(global-subword-mode 1)
