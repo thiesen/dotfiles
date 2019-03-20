@@ -16,3 +16,4 @@ eshell/
 .cask/
 *.sqlite
 .persistent-scratch
+transient
