@@ -17,3 +17,5 @@ eshell/
 *.sqlite
 .persistent-scratch
 transient
+%backup%*
+.recentf*

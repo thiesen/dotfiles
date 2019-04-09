@@ -65,6 +65,8 @@
     git-gutter
     git-link
     ox-gfm))
+(defvar javascript-pkgs
+  '(js2-mode))
 (defvar pkg-list
   '(ruby-pkgs
     clojure-pkgs
@@ -73,7 +75,8 @@
     go-pkgs
     docker-pkgs
     web-pkgs
-    git-pkgs))
+    git-pkgs
+    javascript-pkgs))
 ;; create a concatenated list with the values of the collections
 (defvar my-packages
   (mapcan #'(lambda (var-name) (symbol-value var-name)) pkg-list))
