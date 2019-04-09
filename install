@@ -1,46 +1,19 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.config
-unamestr=`uname`
+ln -sf ~/dotfiles/git/gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/git/gitignore ~/.gitignore
 
-rm -f ~/.bashrc ~/.bashprofile
+ln -sf ~/dotfiles/irb/aprc ~/.aprc
+ln -sf ~/dotfiles/irb/irbrc ~/.irbrc
+ln -sf ~/dotfiles/irb/pryrc ~/.pryrc
+ln -sf ~/dotfiles/irb/unescaped_colors.rb ~/.unescaped_colors.rb
+ln -sf ~/dotfiles/irb/escaped_colors.rb ~/.escaped_colors.rb
 
-ln -sf ~/dotfiles/bashrc             ~/.bashrc
-ln -sf ~/dotfiles/bashprofile        ~/.profile
-ln -sf ~/dotfiles/inputrc            ~/.inputrc
-ln -sf ~/dotfiles/vimrc              ~/.vimrc
-ln -sf ~/dotfiles/irbrc              ~/.irbrc
-ln -sf ~/dotfiles/ctags              ~/.ctags
-ln -sf ~/dotfiles/gitconfig          ~/.gitconfig
-ln -sf ~/dotfiles/gitignore          ~/.gitignore
-ln -sf ~/dotfiles/tigrc              ~/.tigrc
-ln -sf ~/dotfiles/cardinalrc         ~/.cardinalrc
-ln -sf ~/dotfiles/agignore           ~/.agignore
-ln -sf ~/dotfiles/tmux/tmux.conf     ~/.tmux.conf
-ln -sf ~/dotfiles/lldb/lldbinit-lldb ~/.lldbinit-lldb
-ln -sf ~/dotfiles/tern-config        ~/.tern-config
-ln -sf ~/dotfiles/tmuxifier          ~/.tmuxifier
-ln -sf ~/dotfiles/vimputrc           ~/.vimputrc
-ln -sf ~/dotfiles/gdbinit            ~/.gdbinit
-ln -sf ~/dotfiles/sqliterc            ~/.sqliterc
+ln -sf ~/dotfiles/ruby/gemrc ~/.gemrc
+ln -sf ~/dotfiles/ruby/rdebugrc ~/.rdebugrc
 
-ln -sf ~/dotfiles/vim         ~/.vim
+ln -sf ~/dotfiles/sbcl/sbclrc ~/.sbclrc
 
-mkdir -p .config
-ln -sf ~/dotfiles/config/nstart  ~/.config/nstart
-ln -sf ~/dotfiles/config/pkginit ~/.config/pkginit
+ln -sf ~/dotfiles/ctags/ctags ~/.ctags
 
-# linux only
-if [ "$unamestr" == "Linux" ] && [ -f /etc/pacman.conf ]; then
-  ln -sf ~/dotfiles/X11/xinitrc      ~/.xinitrc
-  ln -sf ~/dotfiles/X11/Xmodemap     ~/.Xmodemap
-  ln -sf ~/dotfiles/X11/Xresources   ~/.Xresources
-  ln -sf ~/dotfiles/X11/yaourtc      ~/.yaourtc
-  ln -sf ~/dotfiles/config/surfraw   ~/.config/surfraw
-fi
-
-# mac only
-if [ "$unamestr" == "Darwin" ]; then
-  ln -sf ~/dotfiles/slate ~/.slate
-  echo "Run scripts/xcode.sh in order to setup Xcode plugins and settings"
-fi
+ln -sf ~/dotfiles/emacs ~/.emacs.d
