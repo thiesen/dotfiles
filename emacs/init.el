@@ -15,7 +15,8 @@
     ruby-end
     rspec-mode
     enh-ruby-mode
-    bundler))
+    bundler
+    rvm))
 (defvar clojure-pkgs
   '(clojure-mode
     clojure-mode-extra-font-locking
@@ -53,7 +54,8 @@
     flycheck-gometalinter
     company-go
     go-eldoc
-    ob-go))
+    ob-go
+    protobuf-mode))
 (defvar docker-pkgs
   '(docker
     dockerfile-mode
@@ -107,7 +109,8 @@
 (load "eshell-config.el")
 (load "ssh-config.el")
 (load "flyspell-config.el")
-;;(load "python-config.el")
+(load "javascript-config.el")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

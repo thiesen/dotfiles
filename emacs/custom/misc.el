@@ -38,3 +38,15 @@
 (async-bytecomp-package-mode 1)
 (persistent-scratch-setup-default)
 (setq-default bidi-display-reordering nil)
+
+(global-set-key (kbd "C-c e") 'custom/visit-emacs-config)
+
+(global-set-key [(control shift up)]  'move-line-up)
+(global-set-key [(control shift down)]  'move-line-down)
+
+(setenv "PAGER" (executable-find "cat"))
+
+(defun proced-settings ()
+  (proced-toggle-auto-update))
+
+(add-hook 'proced-mode-hook 'proced-settings)

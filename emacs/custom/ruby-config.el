@@ -1,5 +1,10 @@
+(require 'rvm)
+(rvm-use-default)
+
 (require 'robe)
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
+(add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+(add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 
 (require 'projectile-rails)
 (projectile-rails-global-mode)
@@ -32,3 +37,7 @@
 
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c s") 'hs-show-block)
+
+(setq rspec-allow-multiple-compilation-buffers nil)
+(setq compilation-scroll-output t)
+(setq rspec-use-rvm t)
