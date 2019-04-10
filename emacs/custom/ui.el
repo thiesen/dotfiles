@@ -25,7 +25,7 @@
 (set-window-scroll-bars (minibuffer-window) nil nil)
 
 (setq custom/default-font "Inconsolata")
-(setq custom/default-font-size 11)
+(setq custom/default-font-size 14.5)
 (setq custom/current-font-size custom/default-font-size)
 (setq custom/font-change-increment 1.1)
 

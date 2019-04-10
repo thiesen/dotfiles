@@ -1,0 +1,3 @@
+[submodule "emacs/vendor/docker.el"]
+	path = emacs/vendor/docker.el
+	url = git@github.com:thiesen/docker.el.git

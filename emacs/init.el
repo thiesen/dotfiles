@@ -1,4 +1,5 @@
 (require 'package)
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
@@ -57,8 +58,7 @@
     ob-go
     protobuf-mode))
 (defvar docker-pkgs
-  '(docker
-    dockerfile-mode
+  '(dockerfile-mode
     docker-tramp))
 (defvar git-pkgs
   '(magit
@@ -88,7 +88,18 @@
   (unless (package-installed-p p)
     (package-install p)))
 
-(add-to-list 'load-path "~/.emacs.d/vendor")
+;; local packages
+(defvar local-packages
+  '((docker ."~/.emacs.d/vendor/docker.el")))
+
+(dolist (lp local-packages)
+  (let ((pkg-name (car lp))
+        (pkg-path (cdr lp)))
+    (unless (package-installed-p pkg-name)
+      (package-install-file pkg-path))
+    (require pkg-name)))
+
+;; custom configs
 (add-to-list 'load-path "~/.emacs.d/custom")
 
 (load "utils.el")
