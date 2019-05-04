@@ -127,6 +127,6 @@
   path = .gitconfig.user
 [user]
 	name = thiesen
-	email = nathan.thiesen@marleyspoon.com
+	email = thiesen@tuta.io
 [github]
 	user = thiesen

@@ -41,3 +41,5 @@
 (setq rspec-allow-multiple-compilation-buffers nil)
 (setq compilation-scroll-output t)
 (setq rspec-use-rvm t)
+(setq enh-ruby-add-encoding-comment-on-save nil)
+(setq ruby-insert-encoding-magic-comment nil)
