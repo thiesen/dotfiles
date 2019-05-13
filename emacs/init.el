@@ -17,7 +17,7 @@
     rspec-mode
     enh-ruby-mode
     bundler
-    rvm))
+    rbenv))
 (defvar clojure-pkgs
   '(clojure-mode
     clojure-mode-extra-font-locking
@@ -41,7 +41,6 @@
     ansible
     restclient
     org-bullets
-    ssh
     flyspell
     persistent-scratch))
 (defvar web-pkgs
@@ -90,7 +89,8 @@
 
 ;; local packages
 (defvar local-packages
-  '((docker ."~/.emacs.d/vendor/docker.el")))
+  '((docker . "~/.emacs.d/vendor/docker.el")
+    (ssh . "~/.emacs.d/vendor/ssh.el")))
 
 (dolist (lp local-packages)
   (let ((pkg-name (car lp))
@@ -109,6 +109,7 @@
 (load "editing.el")
 (load "misc.el")
 (load "personal.el")
+(load "enabled-commands.el")
 
 (load "org-mode-config.el")
 (load "clojure-config.el")
