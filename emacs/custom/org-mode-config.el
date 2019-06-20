@@ -15,7 +15,9 @@
    (dot        . t)
    (css        . t)
    (go         . t)
-   (lisp       . t)))
+   (lisp       . t)
+   (shell      . t)
+   (restclient . t)))
 
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (setq org-ellipsis "⤵")

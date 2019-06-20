@@ -41,4 +41,5 @@
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
 
-(go-eldoc-setup)
+(add-hook 'go-mode-hook #'gorepl-mode)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
