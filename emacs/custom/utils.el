@@ -54,6 +54,10 @@ other, future frames."
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+(defun custom/visit-todo ()
+  (interactive)
+  (find-file "~/.todo.org"))
+
 (defun move-line-up ()
   "Move up the current line."
   (interactive)

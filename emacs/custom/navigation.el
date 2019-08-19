@@ -20,7 +20,7 @@
 
 (global-set-key (kbd "C-x C-d") 'dired)
 
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
@@ -31,11 +31,27 @@
 (setq ivy-count-format "(%d/%d) ")
 (setq ivy-format-function 'ivy-format-function-arrow)
 (setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
+      '((swiper . regexp-quote)
+        (t      . ivy--regex-fuzzy)))
 (setq ivy-initial-inputs-alist nil)
 
 (setq magit-completing-read-function 'ivy-completing-read)
 (setq projectile-completion-system 'ivy)
+
+;(setq ivy-extra-directories nil)
+
+(defun eh-ivy-open-current-typed-path ()
+  (interactive)
+  (when ivy--directory
+    (let* ((dir ivy--directory)
+           (text-typed ivy-text)
+           (path (concat dir text-typed)))
+      (delete-minibuffer-contents)
+      (ivy--done path))))
+
+(define-key ivy-minibuffer-map (kbd "<return>") 'ivy-alt-done)
+(define-key ivy-minibuffer-map (kbd "C-f") 'eh-ivy-open-current-typed-path)
+(define-key ivy-minibuffer-map (kbd "TAB") 'ivy-partial)
 
 (require 'counsel)
 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -46,3 +62,6 @@
 (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 (setq history-delete-duplicates t)
+
+(require 'ivy-rich)
+(ivy-rich-mode 1)

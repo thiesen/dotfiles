@@ -10,19 +10,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; local packages
-(defvar local-packages
-  '((docker . "~/.emacs.d/vendor/docker.el")
-    (ssh . "~/.emacs.d/vendor/ssh.el")))
-
-(dolist (lp local-packages)
-  (let ((pkg-name (car lp))
-        (pkg-path (cdr lp)))
-    (unless (package-installed-p pkg-name)
-      (package-install-file pkg-path))
-    (require pkg-name)))
-
 ;; define package collections
+
 (defvar ruby-pkgs
   '(projectile-rails
     robe
@@ -31,16 +20,13 @@
     enh-ruby-mode
     bundler
     rbenv))
-(defvar clojure-pkgs
-  '(clojure-mode
-    clojure-mode-extra-font-locking
-    cider))
 (defvar nav-pkgs
   '(ivy
     counsel
     projectile
     smex
-    ag))
+    ag
+    ivy-rich))
 (defvar misc-pkgs
   '(flycheck
     auto-complete
@@ -55,7 +41,9 @@
     restclient
     org-bullets
     flyspell
-    persistent-scratch))
+    persistent-scratch
+    ob-restclient
+    ssh)
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
@@ -69,9 +57,11 @@
     go-eldoc
     ob-go
     protobuf-mode
-    gorepl-mode))
+    gorepl-mode
+    gotest))
 (defvar docker-pkgs
-  '(dockerfile-mode
+  '(docker
+    dockerfile-mode
     docker-tramp))
 (defvar git-pkgs
   '(magit
@@ -82,7 +72,6 @@
   '(js2-mode))
 (defvar pkg-list
   '(ruby-pkgs
-    clojure-pkgs
     nav-pkgs
     misc-pkgs
     go-pkgs
@@ -113,7 +102,6 @@
 (load "enabled-commands.el")
 
 (load "org-mode-config.el")
-(load "clojure-config.el")
 (load "js-config.el")
 (load "magit-config.el")
 (load "ruby-config.el")

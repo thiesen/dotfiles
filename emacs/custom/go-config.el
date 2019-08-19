@@ -43,3 +43,7 @@
 
 (add-hook 'go-mode-hook #'gorepl-mode)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
+
+(define-key go-mode-map (kbd "C-c , v") 'go-test-current-file)
+(define-key go-mode-map (kbd "C-c , b") 'go-test-current-file-benchmarks)
+(define-key go-mode-map (kbd "C-x x") 'go-run)
