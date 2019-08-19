@@ -43,7 +43,7 @@
     flyspell
     persistent-scratch
     ob-restclient
-    ssh)
+    ssh))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
