@@ -79,3 +79,5 @@
 (global-git-gutter-mode +1)
 
 (global-subword-mode 1)
+
+(setq dumb-jump-use-visible-window nil)

@@ -51,3 +51,5 @@
   (proced-toggle-auto-update))
 
 (add-hook 'proced-mode-hook 'proced-settings)
+
+(dumb-jump-mode)

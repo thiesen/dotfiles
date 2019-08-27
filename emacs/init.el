@@ -14,7 +14,6 @@
 
 (defvar ruby-pkgs
   '(projectile-rails
-    robe
     ruby-end
     rspec-mode
     enh-ruby-mode
@@ -43,7 +42,8 @@
     flyspell
     persistent-scratch
     ob-restclient
-    ssh))
+    ssh
+    dumb-jump))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
@@ -122,7 +122,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ob-restclient redis slack gorepl-mode yafolding terraform-mode sr-speedbar nimbus-theme csv-mode persistent-scratch racket-mode geiser foreign-regexp ghub+ yaml-mode web-mode tagedit sudo-edit ssh smex ruby-end rspec-mode robe restclient rainbow-mode rainbow-delimiters projectile-rails pdf-tools paredit ox-gfm org-bullets ob-go magit ido-completing-read+ gruvbox-theme go-guru go-eldoc git-link git-gutter flycheck-gometalinter flx-ido exec-path-from-shell enh-ruby-mode dockerfile-mode cyberpunk-theme counsel company-go clojure-mode-extra-font-locking cider auto-complete ansible ag))))
+    (arch-packer dumb-jump ob-restclient redis slack gorepl-mode yafolding terraform-mode sr-speedbar nimbus-theme csv-mode persistent-scratch racket-mode geiser foreign-regexp ghub+ yaml-mode web-mode tagedit sudo-edit ssh smex ruby-end rspec-mode restclient rainbow-mode rainbow-delimiters projectile-rails pdf-tools paredit ox-gfm org-bullets ob-go magit ido-completing-read+ gruvbox-theme go-guru go-eldoc git-link git-gutter flycheck-gometalinter flx-ido exec-path-from-shell enh-ruby-mode dockerfile-mode cyberpunk-theme counsel company-go clojure-mode-extra-font-locking cider auto-complete ansible ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

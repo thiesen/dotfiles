@@ -1,16 +1,10 @@
 (require 'rbenv)
 (global-rbenv-mode)
 
-(require 'robe)
-(add-hook 'enh-ruby-mode-hook 'robe-mode)
-(add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
 (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 
 (require 'projectile-rails)
 (projectile-rails-global-mode)
-
-(eval-after-load 'company
-  '(push 'company-robe company-backends))
 
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist
@@ -21,7 +15,7 @@
 (global-set-key (kbd "C-c r r") 'inf-ruby)
 
 (global-company-mode t)
-(push 'company-robe company-backends)
+
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 (add-hook 'ruby-mode-hook
