@@ -10,6 +10,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; define package collections
+
 (defvar ruby-pkgs
   '(projectile-rails
     ruby-end
