@@ -95,7 +95,7 @@
 (load "navigation.el")
 (load "ui.el")
 (load "editing.el")
-(load "misc.el")
+(load "my-misc.el")
 (load "personal.el")
 (load "enabled-commands.el")
 

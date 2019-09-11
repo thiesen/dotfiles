@@ -17,9 +17,12 @@
    (go         . t)
    (lisp       . t)
    (shell      . t)
+   (plantuml   . t)
    (restclient . t)))
 
 (add-hook 'org-mode-hook 'org-bullets-mode)
+
+(setq org-plantuml-jar-path (expand-file-name "../vendor/plantuml.jar"))
 (setq org-ellipsis "⤵")
 (setq org-replace-disputed-keys t)
 (setq org-src-tab-acts-natively t)
@@ -32,8 +35,6 @@
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
-
-
 
 (defun custom/org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
