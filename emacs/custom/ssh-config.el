@@ -4,8 +4,3 @@
               vc-ignore-dir-regexp
               tramp-file-name-regexp))
 (setq tramp-verbose 1)
-(add-hook 'ssh-mode-hook
-              (lambda ()
-                (setq ssh-directory-tracking-mode 'ftp)
-                (shell-dirtrack-mode t)
-                (setq dirtrackp nil)))

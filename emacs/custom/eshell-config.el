@@ -5,11 +5,6 @@
       eshell-prefer-lisp-functions nil
       eshell-destroy-buffer-when-process-dies t)
 
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (add-to-list 'eshell-visual-commands "ssh")
-            (add-to-list 'eshell-visual-commands "tail")
-            (add-to-list 'eshell-visual-commands "top")))
 
 
 (setq eshell-history-size 1024)

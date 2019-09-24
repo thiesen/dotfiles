@@ -91,10 +91,27 @@ other, future frames."
   (let (org-log-done org-log-states)   ; turn off logging
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
+;; clear eshell buffer
+(defun eshell/clear ()
+  "Clear the eshell buffer."
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
 
-;; TODO
-; (defun proced-settings ()
-  ; (proced-toggle-auto-update))
+;; open a new eshell on the current directory
+(defun custom/eshell-here ()
+  "Opens up a new shell in the directory associated with the current buffer's file."
+  (interactive)
+  (let* ((parent (file-name-directory (buffer-file-name)))
+         (name   (car
+                  (last
+                   (split-string parent "/" t)))))
+    (other-window 1)
+    (eshell "new")
+    (rename-buffer (concat "*eshell: " name "*"))
+
+    (insert (concat "ls"))
+    (eshell-send-input)))
 
 ;; go functions
 (defun go-run-buffer()
@@ -118,26 +135,8 @@ other, future frames."
   (local-set-key (kbd "M-[") 'previous-error)
   (local-set-key (kbd "C-c C-c") 'go-run-buffer)
 
-  (auto-complete-mode 1))
-
-;; clear eshell buffer
-(defun eshell/clear ()
-  "Clear the eshell buffer."
-  (let ((inhibit-read-only t))
-    (erase-buffer)
-    (eshell-send-input)))
-
-;; open a new eshell on the current directory
-(defun custom/eshell-here ()
-  "Opens up a new shell in the directory associated with the current buffer's file."
-  (interactive)
-  (let* ((parent (file-name-directory (buffer-file-name)))
-         (name   (car
-                  (last
-                   (split-string parent "/" t)))))
-    (other-window 1)
-    (eshell "new")
-    (rename-buffer (concat "*eshell: " name "*"))
-
-    (insert (concat "ls"))
-    (eshell-send-input)))
+  (auto-complete-mode t)
+  (gorepl-mode 1)
+  (go-eldoc-setup)
+  (set (make-local-variable 'company-backends)
+       '(company-go)))

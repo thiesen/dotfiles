@@ -29,18 +29,10 @@
 
 (setq large-file-warning-threshold nil)
 
-(add-hook 'ssh-mode-hook
-          (lambda ()
-            (setq ssh-directory-tracking-mode t)
-            (shell-dirtrack-mode t)
-            (setq dirtrackp nil)))
-
 (async-bytecomp-package-mode 1)
 (persistent-scratch-setup-default)
 (setq-default bidi-display-reordering nil)
 
 (setenv "PAGER" (executable-find "cat"))
-
-; (add-hook 'proced-mode-hook 'proced-settings)
 
 (dumb-jump-mode)

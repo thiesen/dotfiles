@@ -38,11 +38,6 @@
 
 (windmove-default-keybindings)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(add-hook 'after-init-hook 'global-company-mode)
-
 (setq-default require-final-newline t mode-require-final-newline t )
 
 (run-with-idle-timer 2 nil (lambda () (global-auto-revert-mode t)))

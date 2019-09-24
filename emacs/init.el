@@ -41,12 +41,12 @@
     persistent-scratch
     ob-restclient
     ssh
-    dumb-jump))
+    dumb-jump
+    markdown-mode))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
-    rainbow-delimiters
-    tagedit))
+    rainbow-delimiters))
 (defvar go-pkgs
   '(go-mode
     go-guru
@@ -99,6 +99,7 @@
 (load "personal.el")
 (load "enabled-commands.el")
 (load "my-keybindings.el")
+(load "my-hooks.el")
 
 (load "org-mode-config.el")
 (load "js-config.el")
@@ -109,7 +110,6 @@
 (load "web-config.el")
 (load "eshell-config.el")
 (load "ssh-config.el")
-(load "flyspell-config.el")
 (load "javascript-config.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
