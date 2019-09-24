@@ -22,7 +22,7 @@
 
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
-(setq org-plantuml-jar-path (expand-file-name "../vendor/plantuml.jar"))
+(setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/vendor/plantuml.jar"))
 (setq org-ellipsis "⤵")
 (setq org-replace-disputed-keys t)
 (setq org-src-tab-acts-natively t)
@@ -52,4 +52,4 @@
      (require 'ox-md nil t)
      (require 'ox-gfm nil t)))
 
-(add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
