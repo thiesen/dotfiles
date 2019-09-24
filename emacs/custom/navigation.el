@@ -6,24 +6,15 @@
 (recentf-mode t)
 (setq recentf-max-menu-items 40)
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (setq smex-save-file (concat user-emacs-directory ".smex-items"))
+;; (smex-initialize)
 
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
 
 (projectile-global-mode)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (setq projectile-require-project-root nil)
 (setq ag-highlight-search t)
 (setq ag-reuse-window nil)
-
-(global-set-key (kbd "C-x C-d") 'dired)
-
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
 
 (ivy-mode 1)
 
@@ -54,13 +45,6 @@
 (define-key ivy-minibuffer-map (kbd "TAB") 'ivy-partial)
 
 (require 'counsel)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> l") 'counsel-find-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 (setq history-delete-duplicates t)
 
 (require 'ivy-rich)

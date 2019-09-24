@@ -128,5 +128,10 @@
 [user]
 	name = Nathan Thiesen
 	email = thiesen@tuta.io
+	signingkey = 8CDE23F1A422BF35
 [github]
 	user = thiesen
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true

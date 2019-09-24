@@ -98,17 +98,30 @@
 (load "my-misc.el")
 (load "personal.el")
 (load "enabled-commands.el")
+(load "my-keybindings.el")
 
 (load "org-mode-config.el")
 (load "js-config.el")
-(load "magit-config.el")
 (load "ruby-config.el")
 (load "lisp-config.el")
 (load "go-config.el")
 (load "pdf-config.el")
-(load "docker-config.el")
 (load "web-config.el")
 (load "eshell-config.el")
 (load "ssh-config.el")
 (load "flyspell-config.el")
 (load "javascript-config.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (yaml-mode web-mode tagedit sudo-edit ssh smex ruby-end rspec-mode rbenv rainbow-mode rainbow-delimiters protobuf-mode projectile-rails persistent-scratch pdf-tools ox-gfm org-bullets ob-restclient ob-go nimbus-theme magit js2-mode ivy-rich gruvbox-theme gotest gorepl-mode go-guru go-eldoc git-link git-gutter flycheck-gometalinter enh-ruby-mode dumb-jump dockerfile-mode docker cyberpunk-theme counsel company-go bundler auto-complete arch-packer ansible ag))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

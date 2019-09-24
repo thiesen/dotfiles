@@ -19,12 +19,6 @@
                                                "backups"))))
 (setq auto-save-default nil)
 
-(defun toggle-comment-on-line ()
-  "comment or uncomment current line"
-  (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
-(global-set-key (kbd "C-;") 'toggle-comment-on-line)
-
 ;; use 2 spaces for tabs
 (defun die-tabs ()
   (interactive)
@@ -44,13 +38,10 @@
 
 (windmove-default-keybindings)
 
-(global-set-key (kbd "<RET>") 'newline-and-indent)
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)
-(global-set-key (kbd "M-/") 'company-complete-common)
 
 (setq-default require-final-newline t mode-require-final-newline t )
 
@@ -59,23 +50,6 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-(defun move-line-up ()
-  "Move up the current line."
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2)
-  (indent-according-to-mode))
-
-(defun move-line-down ()
-  "Move down the current line."
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1)
-  (indent-according-to-mode))
-
-(global-set-key [(control shift up)]  'move-line-up)
-(global-set-key [(control shift down)]  'move-line-down)
 (global-git-gutter-mode +1)
 
 (global-subword-mode 1)

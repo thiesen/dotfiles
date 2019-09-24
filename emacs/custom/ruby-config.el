@@ -12,7 +12,6 @@
 
 (remove-hook 'enh-ruby-mode-hook 'erm-define-faces)
 (setq ruby-deep-indent-paren nil)
-(global-set-key (kbd "C-c r r") 'inf-ruby)
 
 (global-company-mode t)
 
@@ -28,9 +27,6 @@
       ,(rx (or "}" "]" "end"))                       ; Block end
       ,(rx (or "#" "=begin"))                        ; Comment start
       ruby-forward-sexp nil)))
-
-(global-set-key (kbd "C-c h") 'hs-hide-block)
-(global-set-key (kbd "C-c s") 'hs-show-block)
 
 (setq rspec-allow-multiple-compilation-buffers nil)
 (setq compilation-scroll-output t)
