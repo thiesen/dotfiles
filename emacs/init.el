@@ -29,8 +29,6 @@
     auto-complete
     sudo-edit
     company
-    cyberpunk-theme
-    gruvbox-theme
     nimbus-theme
     yaml-mode
     pdf-tools
@@ -90,7 +88,11 @@
 ;; custom configs
 (add-to-list 'load-path "~/.emacs.d/custom")
 
+(load "my-keybindings.el")
+(load "my-hooks.el")
+(load "my-configs.el")
 (load "utils.el")
+
 (load "shell-integration.el")
 (load "navigation.el")
 (load "ui.el")
@@ -98,8 +100,6 @@
 (load "my-misc.el")
 (load "personal.el")
 (load "enabled-commands.el")
-(load "my-keybindings.el")
-(load "my-hooks.el")
 
 (load "org-mode-config.el")
 (load "js-config.el")

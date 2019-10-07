@@ -1,8 +1,6 @@
 (show-paren-mode t)
 (global-hl-line-mode t)
 
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
 (setq-default c-basic-offset 2)
 
 (setq css-indent-offset 2)
