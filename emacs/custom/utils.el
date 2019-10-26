@@ -79,11 +79,25 @@ other, future frames."
   (forward-line -1)
   (indent-according-to-mode))
 
-;; comment/uncomment current line
+;; comment/uncomment current line or region
+
+(defun custom/get-line-or-region-beginning ()
+  "return the position of the beginning of the region or end of line (whatever is lower)"
+  (if (region-active-p)
+    (min (region-beginning) (line-beginning-position))
+    (line-beginning-position)))
+
+(defun custom/get-line-or-region-end ()
+  "return the position of the end of the region or end of line (whatever is higher)"
+  (if (region-active-p)
+      (max (region-end) (line-end-position))
+    (line-end-position)))
+
 (defun custom/toggle-comment-on-line ()
   "comment or uncomment current line"
   (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+  (comment-or-uncomment-region (custom/get-line-or-region-beginning)
+                               (custom/get-line-or-region-end)))
 
 ;; set list to done if all subentries are done
 (defun custom/org-summary-todo (n-done n-not-done)
