@@ -40,7 +40,8 @@
     ob-restclient
     ssh
     dumb-jump
-    markdown-mode))
+    markdown-mode
+    exec-path-from-shell))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode

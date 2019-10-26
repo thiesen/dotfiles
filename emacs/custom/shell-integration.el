@@ -1,4 +1,4 @@
-(when (memq window-system '(mac ns))
+(when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs
    '("PATH" "GOPATH" "GOROOT" "ANSIBLE_VAULT_PASSWORD_FILE" "NVM_DIR")))
