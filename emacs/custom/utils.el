@@ -63,6 +63,11 @@ other, future frames."
   (interactive)
   (find-file "~/.todo.org"))
 
+;; visit ideas
+(defun custom/visit-ideas ()
+  (interactive)
+  (find-file "~/.ideas.org"))
+
 ;;  move current line up and down
 (defun custom/move-line-up ()
   "Move up the current line."

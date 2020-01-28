@@ -108,3 +108,80 @@
 
 ;; not add encoding comment on ruby mode
 (setq ruby-insert-encoding-magic-comment nil)
+
+;;; web
+(setq css-indent-offset 2)
+(setq js-indent-level 2)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq save-place-file (concat user-emacs-directory "places"))
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+(setq auto-save-default nil)
+(setq electric-indent-mode nil)
+(setq dumb-jump-use-visible-window nil)
+(setq eshell-scroll-to-bottom-on-input 'all)
+(setq eshell-error-if-no-glob t)
+(setq eshell-hist-ignoredups t)
+(setq eshell-save-history-on-exit t)
+(setq eshell-prefer-lisp-functions nil)
+(setq eshell-destroy-buffer-when-process-dies t)
+(setq eshell-history-size 1024)
+(setq eshell-prompt-regexp "^[^#$]*[#$] ")
+(setq eshell-prompt-function
+      (lambda ()
+        (concat
+         (propertize ((lambda (p-lst)
+            (if (> (length p-lst) 3)
+                (concat
+                 (mapconcat (lambda (elm) (if (zerop (length elm)) ""
+                                            (substring elm 0 1)))
+                            (butlast p-lst 3)
+                            "/")
+                 "/"
+                 (mapconcat (lambda (elm) elm)
+                            (last p-lst 3)
+                            "/"))
+              (mapconcat (lambda (elm) elm)
+                         p-lst
+                         "/")))
+          (split-string (pwd-repl-home (eshell/pwd)) "/")) 'face `(:foreground "yellow"))
+         (or (curr-dir-git-branch-string (eshell/pwd)))
+         (propertize "$ " 'face 'default))))
+
+(setq eshell-highlight-prompt nil)
+(setq eshell-buffer-shorthand t)
+(setq inferior-lisp-program "ros -Q run")
+(setq slime-contribs '(slime-fancy))
+(setq uniquify-buffer-name-style 'forward)
+(setq recentf-save-file (concat user-emacs-directory ".recentf"))
+(setq recentf-max-menu-items 40)
+(setq projectile-require-project-root nil)
+(setq ag-highlight-search t)
+(setq ag-reuse-window nil)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
+(setq ivy-format-function 'ivy-format-function-arrow)
+(setq ivy-re-builders-alist
+      '((swiper . regexp-quote)
+        (t      . ivy--regex-fuzzy)))
+(setq ivy-initial-inputs-alist nil)
+
+(setq magit-completing-read-function 'ivy-completing-read)
+(setq projectile-completion-system 'ivy)
+
+;(setq ivy-extra-directories nil)
+(setq history-delete-duplicates t)
+
+(setq user-full-name "Nathan P. Thiesen")
+(setq user-mail-address "thiesen@tuta.io")
+
+(setq remote-file-name-inhibit-cache nil)
+(setq vc-ignore-dir-regexp
+      (format "%s\\|%s"
+              vc-ignore-dir-regexp
+              tramp-file-name-regexp))
+(setq tramp-verbose 1)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)

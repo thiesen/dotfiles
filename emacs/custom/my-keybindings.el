@@ -18,6 +18,7 @@
 ;; custom functions
 (global-set-key (kbd "C-c e") 'custom/visit-emacs-config)
 (global-set-key (kbd "C-c t") 'custom/visit-todo)
+(global-set-key (kbd "C-c i") 'custom/visit-ideas)
 
 ;; move line up and down
 (global-set-key [(control shift up)]  'custom/move-line-up)
