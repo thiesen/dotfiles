@@ -17,3 +17,9 @@ ln -sf ~/dotfiles/sbcl/sbclrc ~/.sbclrc
 ln -sf ~/dotfiles/ctags/ctags ~/.ctags
 
 ln -sf ~/dotfiles/emacs ~/.emacs.d
+
+ln -sf ~/dotfiles/X11/.Xresources ~/.Xresources
+
+
+sudo ln -sf ~/dotfiles/keymaps/personal.map /usr/local/share/kbd/keymaps/personal.map
+sudo ln -sf ~/dotfiles/conf/vconsole.conf /etc/vconsole.conf
