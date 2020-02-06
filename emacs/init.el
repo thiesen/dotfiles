@@ -90,7 +90,8 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 
 (load "my-keybindings.el")
-(load "my-hooks.el")
+(load "remove-hooks.el")
+(load "add-hooks.el")
 (load "my-configs.el")
 (load "utils.el")
 

@@ -3,11 +3,9 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-copy-env "GOPATH"))
 
-
 (defun go-run-buffer()
   (interactive)
   (shell-command (concat "go run " (buffer-name))))
-
 
 (require 'go-guru)
 

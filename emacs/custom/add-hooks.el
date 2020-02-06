@@ -19,9 +19,6 @@
 ;; use custom/org-summary-todo for managing list state
 (add-hook 'org-after-todo-statistics-hook 'custom/org-summary-todo)
 
-;; truncate lines (off)
-(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
-
 ;; completion on ssh-mode (TODO: not working right now :( )
 (add-hook 'ssh-mode-hook
           (lambda ()
@@ -70,8 +67,3 @@
 
 ;; add my-go-mode-hook to go-mode
 (add-hook 'go-mode-hook 'my-go-mode-hook)
-
-
-;;; remove hooks
-;; do not use enh ruby faces
-(remove-hook 'enh-ruby-mode-hook 'erm-define-faces)

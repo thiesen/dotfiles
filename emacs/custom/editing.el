@@ -3,8 +3,6 @@
 
 (setq-default c-basic-offset 2)
 
-
-
 (require 'saveplace)
 (setq-default save-place t)
 

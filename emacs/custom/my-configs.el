@@ -115,11 +115,18 @@
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
+
+;;; general
 (setq save-place-file (concat user-emacs-directory "places"))
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 (setq auto-save-default nil)
+
 (setq electric-indent-mode nil)
+
+;;; dumb jump
 (setq dumb-jump-use-visible-window nil)
+
+;;; eshell
 (setq eshell-scroll-to-bottom-on-input 'all)
 (setq eshell-error-if-no-glob t)
 (setq eshell-hist-ignoredups t)
@@ -151,14 +158,20 @@
 
 (setq eshell-highlight-prompt nil)
 (setq eshell-buffer-shorthand t)
+
+;;; slime
 (setq inferior-lisp-program "ros -Q run")
 (setq slime-contribs '(slime-fancy))
+
+
 (setq uniquify-buffer-name-style 'forward)
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (setq recentf-max-menu-items 40)
 (setq projectile-require-project-root nil)
+;;; ag
 (setq ag-highlight-search t)
 (setq ag-reuse-window nil)
+;;; ivy
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
 (setq ivy-format-function 'ivy-format-function-arrow)

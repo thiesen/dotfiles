@@ -29,5 +29,4 @@ PWD is not in a git repo (or the git command is not found)."
                           (if (> (length git-output) 0)
                               (substring git-output 0 -1)
                             "(no branch)")
-                          "]") 'face `(:foreground "green"))
-      )))
+                          "]") 'face `(:foreground "green")))))
