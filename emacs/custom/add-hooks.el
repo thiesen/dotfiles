@@ -10,6 +10,9 @@
 ;; use custom bullets on org-mode
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
+;; truncate lines in org-mode
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
+
 ;; allow windmove in org mode
 (add-hook 'org-shiftup-final-hook 'windmove-up)
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
@@ -24,9 +27,6 @@
           (lambda ()
             (setq ssh-directory-tracking-mode t)
             (setq dirtrackp nil)))
-
-;; turn on auto-fill-mode by default
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;;enable flyspell on github flavoured markdown mode
 (add-hook 'gfm-mode-hook 'flyspell-mode)
