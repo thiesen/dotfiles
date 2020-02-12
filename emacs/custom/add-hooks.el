@@ -11,7 +11,7 @@
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
 ;; truncate lines in org-mode
-(add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
 ;; allow windmove in org mode
 (add-hook 'org-shiftup-final-hook 'windmove-up)
