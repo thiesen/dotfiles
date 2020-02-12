@@ -61,3 +61,6 @@
 (global-set-key (kbd "<f1> l") 'counsel-find-library)
 (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+
+;; projectile rails
+(define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
