@@ -41,7 +41,8 @@
     ssh
     dumb-jump
     markdown-mode
-    exec-path-from-shell))
+    exec-path-from-shell
+    move-text))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode

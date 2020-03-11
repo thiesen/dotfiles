@@ -20,10 +20,6 @@
 (global-set-key (kbd "C-c t") 'custom/visit-todo)
 (global-set-key (kbd "C-c i") 'custom/visit-ideas)
 
-;; move line up and down
-(global-set-key [(control shift up)]  'custom/move-line-up)
-(global-set-key [(control shift down)]  'custom/move-line-down)
-
 ;; toggle comment on line
 (global-set-key (kbd "C-;") 'custom/toggle-comment-on-line)
 
@@ -63,4 +59,5 @@
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 
 ;; projectile rails
+(require 'projectile-rails)
 (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)

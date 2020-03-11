@@ -19,3 +19,4 @@
 (setenv "PAGER" (executable-find "cat"))
 
 (dumb-jump-mode)
+(move-text-default-bindings)
