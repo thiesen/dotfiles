@@ -42,7 +42,8 @@
     dumb-jump
     markdown-mode
     exec-path-from-shell
-    move-text))
+    move-text
+    pinentry))
 (defvar web-pkgs
   '(web-mode
     rainbow-mode
