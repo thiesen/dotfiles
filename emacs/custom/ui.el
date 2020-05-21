@@ -24,4 +24,5 @@
 (define-key global-map (kbd "C--") 'custom/decrease-font-size)
 
 (setq custom/default-font "Fira Mono")
+;;(setq custom/default-font "liberation")
 (custom/reset-font-size)

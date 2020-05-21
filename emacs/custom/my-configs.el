@@ -46,7 +46,7 @@
 (setq custom/default-font "Inconsolata")
 
 ;; default font size
-(setq custom/default-font-size 14.5)
+(setq custom/default-font-size 13)
 (setq custom/current-font-size custom/default-font-size)
 
 ;; font size change increment
